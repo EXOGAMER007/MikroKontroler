@@ -44,6 +44,23 @@ void kirimDataSensor()
   Serial.println("%");
 }
 
+void testData()
+{
+  float h = dht11.readHumidity();
+  float t = dht11.readTemperature();
+  Serial.print("Suhu: ");
+  Serial.print(t);
+  Serial.print("°C | Kelembapan: ");
+  Serial.print(h);
+  Serial.println("%");
+}
+
+void delayTest()
+{
+  delay(2000); // Delay selama 2 detik
+  testData();  // Panggil fungsi testData setelah delay
+}
+
 void setup()
 {
   Serial.begin(115200);
@@ -57,6 +74,7 @@ void setup()
 
 void loop()
 {
-  Blynk.run();
-  timer.run(); // Menjalankan timer
+  // Blynk.run();
+  // timer.run(); // Menjalankan timer
+  delayTest(); // Panggil fungsi delayTest untuk menguji delay dan pembacaan sensor
 }
